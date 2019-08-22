@@ -7,7 +7,7 @@ GToolkit bindings to [Clipboard](https://github.com/aweinstock314/rust-clipboard
 
 ```smalltalk
 Metacello new
-   baseline: 'Clipboard';
+   baseline: 'GToolkitClipboard';
    repository: 'github://feenkcom/gtoolkit-clipboard/src';
    load
 ```
