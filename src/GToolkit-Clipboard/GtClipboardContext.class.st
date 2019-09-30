@@ -114,6 +114,6 @@ GtClipboardContext >> setContents: aString [
 		aStream nextPut: 0 ].
 	
 	encodedString pinInMemory.
-	self primSetContents: encodedString.
-	encodedString unpinInMemory.
+	[ self primSetContents: encodedString ] ensure: [
+		encodedString unpinInMemory ]
 ]
