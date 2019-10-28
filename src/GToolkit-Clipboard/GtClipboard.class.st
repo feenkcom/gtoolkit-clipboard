@@ -9,11 +9,6 @@ Class {
 	#category : #'GToolkit-Clipboard'
 }
 
-{ #category : #'library path' }
-GtClipboard class >> ffiLibraryName [
-	^ GtClipboardLibrary
-]
-
 { #category : #initialization }
 GtClipboard class >> initialize [
 	self startUp: true.
@@ -77,11 +72,6 @@ GtClipboard >> ensureContext [
 	context := GtClipboardContext new.
 
 	^ context isValid
-]
-
-{ #category : #'library path' }
-GtClipboard >> ffiLibraryName [
-	^ self class ffiLibraryName
 ]
 
 { #category : #initialization }
