@@ -60,15 +60,12 @@ GtClipboardContext >> ffiLibraryName [
 
 { #category : #accessing }
 GtClipboardContext >> getContents [
-	| aBuffer aString |
+	| aBoxerString |
 
-	aBuffer := self primGetContents.
-	aString := aBuffer readStringUTF8.
-
-	self primFreeContents: aBuffer getHandle.
-	aBuffer beNull.
-
-	^ aString
+	aBoxerString := GtBoxerString new.
+	^ [ self primGetContents: aBoxerString.
+		aBoxerString string ] ensure: [
+		aBoxerString release ]
 ]
 
 { #category : #testing }
@@ -77,18 +74,13 @@ GtClipboardContext >> isValid [
 ]
 
 { #category : #'private - ffi' }
-GtClipboardContext >> primFreeContents: aHandle [
-	^ self ffiCall: #(void clipboard_free_contents(void* aHandle))
+GtClipboardContext >> primGetContents: aGtBoxerString [
+	^ self ffiCall: #(void clipboard_get_contents(GtClipboardContext self, GtBoxerString aGtBoxerString))
 ]
 
 { #category : #'private - ffi' }
-GtClipboardContext >> primGetContents [
-	^ self ffiCall: #(void* clipboard_get_contents(GtClipboardContext self))
-]
-
-{ #category : #'private - ffi' }
-GtClipboardContext >> primSetContents: aString [
-	^ self ffiCall: #(void clipboard_set_contents(GtClipboardContext self, ByteArray aString))
+GtClipboardContext >> primSetContents: aGtBoxerString [
+	^ self ffiCall: #(void clipboard_set_contents(GtClipboardContext self, GtBoxerString aGtBoxerString))
 ]
 
 { #category : #'private - ffi' }
@@ -103,17 +95,9 @@ GtClipboardContext >> release [
 
 { #category : #accessing }
 GtClipboardContext >> setContents: aString [
-	| encodedString |
-	
-	encodedString := ByteArray streamContents: [ :aStream |
-		ZnUTF8Encoder new 
-			next: aString size 
-			putAll: aString asString
-			startingAt: 1 
-			toStream: aStream.
-		aStream nextPut: 0 ].
-	
-	encodedString pinInMemory.
-	[ self primSetContents: encodedString ] ensure: [
-		encodedString unpinInMemory ]
+	| aBoxerString |
+
+	aBoxerString := GtBoxerString fromString: aString.
+	[ self primSetContents: aBoxerString ] ensure: [
+		aBoxerString release ]
 ]
