@@ -74,6 +74,23 @@ GtClipboard >> ensureContext [
 	^ context isValid
 ]
 
+{ #category : #accessing }
+GtClipboard >> gtCipboardTextFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'Text';
+		text: [ self clipboardText ]
+]
+
+{ #category : #accessing }
+GtClipboard >> gtRecentItemsFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Recent items';
+		items: [ self recentItems ];
+		itemFormat: [ :each | each asString ]
+]
+
 { #category : #initialization }
 GtClipboard >> initialize [
 	super initialize.
