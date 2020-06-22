@@ -14,9 +14,9 @@ BaselineOfGToolkitClipboard >> baseline: spec [
 		spec postLoadDoIt: #'postLoadClipboard:'.
 		spec 
 			baseline: 'GToolkitInstaller' with: [
-				spec repository: 'github://feenkcom/gtoolkit-installer:v0.7.15/src' ];
+				spec repository: 'github://feenkcom/gtoolkit-installer:v0.7.16/src' ];
 			baseline: 'GToolkitBoxer' with: [
-				spec repository: 'github://feenkcom/gtoolkit-boxer:v0.6.72/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-boxer:v0.6.73/src' ].
 		spec package: 'GToolkit-Clipboard' with: [
 				spec requires: #('GToolkitInstaller' 'GToolkitBoxer' ). ]. ].
 
