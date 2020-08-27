@@ -61,6 +61,7 @@ GtClipboardContext >> ffiLibraryName [
 { #category : #accessing }
 GtClipboardContext >> getContents [
 	<return: #String>
+
 	^ GtBoxerString getStringFrom: [ :aBoxerString | self primGetContents: aBoxerString ]
 ]
 
@@ -91,9 +92,7 @@ GtClipboardContext >> release [
 
 { #category : #accessing }
 GtClipboardContext >> setContents: aString [
-	| aBoxerString |
-
-	aBoxerString := GtBoxerString fromString: aString.
-	[ self primSetContents: aBoxerString ] ensure: [
-		aBoxerString release ]
+	GtBoxerString
+		fromString: aString
+		during: [ :aBoxerString | self primSetContents: aBoxerString ]
 ]
