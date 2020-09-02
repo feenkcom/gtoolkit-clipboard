@@ -77,7 +77,7 @@ GtClipboard >> ensureContext [
 { #category : #accessing }
 GtClipboard >> gtCipboardTextFor: aView [
 	<gtView>
-	^ aView textEditor
+	^ aView text
 		title: 'Text';
 		text: [ self clipboardText ]
 ]
