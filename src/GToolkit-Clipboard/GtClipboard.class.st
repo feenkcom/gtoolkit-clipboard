@@ -88,7 +88,7 @@ GtClipboard >> gtRecentItemsFor: aView [
 	^ aView list
 		title: 'Recent items';
 		items: [ self recentItems ];
-		itemFormat: [ :each | each asString ]
+		itemText: [ :each | each asString ]
 ]
 
 { #category : #initialization }
