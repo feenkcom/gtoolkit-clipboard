@@ -87,6 +87,6 @@ GtClipboardLibrary >> unix64LibraryName [
 GtClipboardLibrary >> win32LibraryName [
 	^ self class environment
 		at: #FFIWindowsLibraryFinder
-		ifPresent: [ :aLibraryFinder | aLibraryFinder findLibrary: 'libClipboard.dll' ]
+		ifPresent: [ :aLibraryFinder | aLibraryFinder findAnyLibrary: #('Clipboard.dll' 'libClipboard.dll') ]
 		ifAbsent: [ self detectLibrary: 'libClipboard.dll' ]
 ]
