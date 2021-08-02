@@ -7,17 +7,19 @@ Class {
 	#category : #BaselineOfGToolkitClipboard
 }
 
-{ #category : #baselines }
+{ #category : #baseline }
 BaselineOfGToolkitClipboard >> baseline: spec [
 	<baseline>
-	spec for: #common do: [
-		spec
-			baseline: 'GToolkitInstaller' with: [ spec repository: 'github://feenkcom/gtoolkit-installer/src' ].
-		spec
-			baseline: 'GToolkitBoxer' with: [ spec repository: 'github://feenkcom/gtoolkit-boxer/boxer-bindings' ].
-		spec
-			postLoadDoIt: #'postLoadClipboard:';
-			package: 'GToolkit-Clipboard' with: [ spec requires: #(GToolkitInstaller GToolkitBoxer) ] ]
+	spec for: #'common' do: [
+		spec postLoadDoIt: #'postLoadClipboard:'.
+		spec 
+			baseline: 'GToolkitInstaller' with: [
+				spec repository: 'github://feenkcom/gtoolkit-installer:main/src' ];
+			baseline: 'GToolkitBoxer' with: [
+				spec repository: 'github://feenkcom/gtoolkit-boxer:main/boxer-bindings' ].
+		spec package: 'GToolkit-Clipboard' with: [
+				spec requires: #('GToolkitInstaller' 'GToolkitBoxer' ). ]. ].
+
 ]
 
 { #category : #baselines }
