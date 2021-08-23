@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfGToolkitClipboard }
+Package { #name : 'BaselineOfGToolkitClipboard' }
