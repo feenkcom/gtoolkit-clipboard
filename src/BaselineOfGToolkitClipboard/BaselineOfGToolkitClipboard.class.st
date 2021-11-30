@@ -1,30 +1,30 @@
 Class {
-	#name : 'BaselineOfGToolkitClipboard',
-	#superclass : 'BaselineOf',
+	#name : #BaselineOfGToolkitClipboard,
+	#superclass : #BaselineOf,
 	#classVars : [
 		'PostLoaded'
 	],
-	#category : 'BaselineOfGToolkitClipboard'
+	#category : #BaselineOfGToolkitClipboard
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfGToolkitClipboard >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec postLoadDoIt: #'postLoadClipboard:'.
 		spec
 			baseline: 'GToolkitInstaller' with: [
-				spec repository: 'github://feenkcom/gtoolkit-installer:v0.8.8/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-installer:v0.8.9/src' ].
 		spec
 			baseline: 'GToolkitBoxer' with: [
-				spec repository: 'github://feenkcom/gtoolkit-boxer:v0.8.18/boxer-bindings' ].
+				spec repository: 'github://feenkcom/gtoolkit-boxer:v0.8.19/boxer-bindings' ].
 
 		spec package: 'GToolkit-Clipboard' with: [
 			spec requires: #('GToolkitInstaller' 'GToolkitBoxer') ].
 	]
 ]
 
-{ #category : 'baselines' }
+{ #category : #baselines }
 BaselineOfGToolkitClipboard >> postLoadClipboard: spec [
 	(PostLoaded isNotNil and: [ PostLoaded ])
 		ifTrue: [ ^ self ].
