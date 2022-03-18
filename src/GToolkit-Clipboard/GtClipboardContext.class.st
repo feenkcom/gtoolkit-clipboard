@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #'library path' }
-GtClipboardContext class >> ffiLibraryName [
+GtClipboardContext class >> ffiLibrary [
 	^ GtClipboardLibrary
 ]
 
@@ -19,11 +19,6 @@ GtClipboardContext class >> primRelease: aHandle [
 	
 	"Plain pointers must be deleted using delete(), all users must implement a specific method"
 	^ self ffiCall: #(void clipboard_destroy_clipboard_context(void** aHandle))
-]
-
-{ #category : #'library path' }
-GtClipboardContext >> ffiLibraryName [
-	^ self class ffiLibraryName
 ]
 
 { #category : #accessing }
