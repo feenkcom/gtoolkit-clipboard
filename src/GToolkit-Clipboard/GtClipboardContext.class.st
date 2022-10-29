@@ -18,7 +18,7 @@ GtClipboardContext class >> primCreate [
 GtClipboardContext class >> primRelease: aHandle [
 	
 	"Plain pointers must be deleted using delete(), all users must implement a specific method"
-	^ self ffiCall: #(void clipboard_destroy_clipboard_context(void** aHandle))
+	^ self ffiCall: #(void clipboard_destroy_clipboard_context(void* aHandle))
 ]
 
 { #category : #accessing }
