@@ -12,22 +12,6 @@ GtClipboardLibrary class >> ffiLibraryName [
 	^ self
 ]
 
-{ #category : #installation }
-GtClipboardLibrary class >> install [
-	<script: 'self install'>
-	| installer |
-
-	installer := GtLibraryInstaller new.
-	installer library: 'Clipboard'.
-	installer version: 'development'.
-	installer icon: (Form extent: 1@1 depth: 32).
-	installer binary: 'libClipboard'.
-	installer url: 'https://dl.feenk.com/{library}/{platform}/{version}/{arch}/{binary}.{extension}'.
-	installer works: [ GtClipboardLibrary uniqueInstance hasModule ].
-
-	installer run
-]
-
 { #category : #'api - library' }
 GtClipboardLibrary >> detectLibrary: aFileName [
 	"Pharo9 introduced a platform specific FFILibraryFinder which should be used instead of this custom implementation"
