@@ -1,9 +1,6 @@
 Class {
 	#name : #BaselineOfGToolkitClipboard,
 	#superclass : #BaselineOf,
-	#classVars : [
-		'PostLoaded'
-	],
 	#category : #BaselineOfGToolkitClipboard
 }
 
@@ -22,13 +19,4 @@ BaselineOfGToolkitClipboard >> baseline: spec [
 		spec package: 'GToolkit-Clipboard' with: [
 			spec requires: #('GToolkitInstaller' 'GToolkitBoxer') ].
 	]
-]
-
-{ #category : #baselines }
-BaselineOfGToolkitClipboard >> postLoadClipboard: spec [
-	(PostLoaded isNotNil and: [ PostLoaded ])
-		ifTrue: [ ^ self ].
-
-	PostLoaded := true.
-	(self class environment at: #GtClipboardLibrary) install
 ]
