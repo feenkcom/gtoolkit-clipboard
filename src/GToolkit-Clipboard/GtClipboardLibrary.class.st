@@ -1,26 +1,14 @@
 Class {
 	#name : #GtClipboardLibrary,
 	#superclass : #FFILibrary,
-	#classInstVars : [
-		'MouseWheelScrollSpeed'
-	],
+	#traits : 'TGtWithStringBox',
+	#classTraits : 'TGtWithStringBox classTrait',
 	#category : #'GToolkit-Clipboard'
 }
 
 { #category : #'library path' }
-GtClipboardLibrary class >> ffiLibraryName [
+GtClipboardLibrary class >> ffiLibrary [
 	^ self
-]
-
-{ #category : #'api - library' }
-GtClipboardLibrary >> detectLibrary: aFileName [
-	"Pharo9 introduced a platform specific FFILibraryFinder which should be used instead of this custom implementation"
-
-	^ ({ Smalltalk imageDirectory . Smalltalk vmDirectory . Smalltalk vmBinary parent / 'Plugins'. FileSystem workingDirectory }
-		collect: [ :aPath | aPath asFileReference / aFileName ])
-			detect: #exists
-			ifFound: #fullName
-			ifNone: [ aFileName ]
 ]
 
 { #category : #testing }
@@ -40,10 +28,7 @@ GtClipboardLibrary >> hasModule [
 
 { #category : #'api - library' }
 GtClipboardLibrary >> macLibraryName [
-	^ self class environment
-		at: #FFIMacLibraryFinder
-		ifPresent: [ :aLibraryFinder | aLibraryFinder findLibrary: 'libClipboard.dylib' ]
-		ifAbsent: [ self detectLibrary: 'libClipboard.dylib' ]
+	^ FFIMacLibraryFinder findLibrary: 'libClipboard.dylib'
 ]
 
 { #category : #'private - ffi' }
@@ -53,24 +38,15 @@ GtClipboardLibrary >> primTest [
 
 { #category : #'api - library' }
 GtClipboardLibrary >> unix32LibraryName [
-	^ self class environment
-		at: #FFIUnix32LibraryFinder
-		ifPresent: [ :aLibraryFinder | aLibraryFinder findLibrary: 'libClipboard.so' ]
-		ifAbsent: [ self detectLibrary: 'libClipboard.so' ]
+	^ FFIUnix32LibraryFinder findLibrary: 'libClipboard.so'
 ]
 
 { #category : #'api - library' }
 GtClipboardLibrary >> unix64LibraryName [
-	^ self class environment
-		at: #FFIUnix64LibraryFinder
-		ifPresent: [ :aLibraryFinder | aLibraryFinder findLibrary: 'libClipboard.so' ]
-		ifAbsent: [ self detectLibrary: 'libClipboard.so' ]
+	^ FFIUnix64LibraryFinder findLibrary: 'libClipboard.so'
 ]
 
 { #category : #'api - library' }
 GtClipboardLibrary >> win32LibraryName [
-	^ self class environment
-		at: #FFIWindowsLibraryFinder
-		ifPresent: [ :aLibraryFinder | aLibraryFinder findAnyLibrary: #('Clipboard.dll' 'libClipboard.dll') ]
-		ifAbsent: [ self detectLibrary: 'libClipboard.dll' ]
+	^ FFIWindowsLibraryFinder findLibrary: 'Clipboard.dll'
 ]
