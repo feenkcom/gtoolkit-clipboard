@@ -6,7 +6,7 @@ Class {
 
 { #category : #'library path' }
 GtClipboardContext class >> ffiLibrary [
-	^ GtClipboardLibrary
+	^ GtClipboardLibrary uniqueInstance
 ]
 
 { #category : #'private - ffi' }
@@ -25,22 +25,22 @@ GtClipboardContext class >> primRelease: aHandle [
 GtClipboardContext >> getContents [
 	<return: #String>
 
-	^ GtBoxerString getStringFrom: [ :aBoxerString | self primGetContents: aBoxerString ]
+	^ self ffiLibrary getStringFrom: [ :aBoxerString | self primGetContents: aBoxerString ]
 ]
 
 { #category : #'private - ffi' }
 GtClipboardContext >> primGetContents: aGtBoxerString [
-	^ self ffiCall: #(void clipboard_get_contents(GtClipboardContext self, GtBoxerString aGtBoxerString))
+	^ self ffiCall: #(void clipboard_get_contents(self, GtStringBox aGtBoxerString))
 ]
 
 { #category : #'private - ffi' }
 GtClipboardContext >> primSetContents: aGtBoxerString [
-	^ self ffiCall: #(void clipboard_set_contents(GtClipboardContext self, GtBoxerString aGtBoxerString))
+	^ self ffiCall: #(void clipboard_set_contents(self, GtStringBox aGtBoxerString))
 ]
 
 { #category : #accessing }
 GtClipboardContext >> setContents: aString [
-	GtBoxerString
-		fromString: aString
+	self ffiLibrary
+		newString: aString
 		during: [ :aBoxerString | self primSetContents: aBoxerString ]
 ]
