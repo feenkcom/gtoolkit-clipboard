@@ -6,14 +6,14 @@ Class {
 
 { #category : #baseline }
 BaselineOfGToolkitClipboard >> baseline: spec [
-	<baseline>
+	<baseline> ""
 	spec for: #'common' do: [
 		spec 
-			baseline: 'GToolkitInstaller' with: [
-				spec repository: 'github://feenkcom/gtoolkit-installer:main/src' ];
 			baseline: 'GToolkitBoxer' with: [
-				spec repository: 'github://feenkcom/gtoolkit-boxer:main/boxer-bindings' ].
-		spec package: 'GToolkit-Clipboard' with: [
-				spec requires: #('GToolkitInstaller' 'GToolkitBoxer' ). ]. ].
+				spec repository: 'github://feenkcom/gtoolkit-boxer:main/boxer-bindings' ];
+			baseline: 'GToolkitPhlowForRust' with: [
+				spec repository: 'github://feenkcom/gt4phlow-rs:main/src' ].
 
+		spec package: 'GToolkit-Clipboard' with: [
+				spec requires: #('GToolkitBoxer' 'GToolkitPhlowForRust'). ]. ]
 ]
