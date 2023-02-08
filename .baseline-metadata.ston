@@ -1,1 +1,1 @@
-{	"repositories" : {		"github://feenkcom/gtoolkit-installer/src" : "v0.8.23",		"github://feenkcom/gtoolkit-boxer/boxer-bindings" : "v0.8.48"	}}
+{	"repositories" : {		"github://feenkcom/gt4phlow-rs/src" : "v0.6.0",		"github://feenkcom/gtoolkit-boxer/boxer-bindings" : "v0.8.48"	}}
