@@ -1,7 +1,7 @@
 Class {
 	#name : #GtClipboardContext,
 	#superclass : #GtBoxerValueBox,
-	#category : #'GToolkit-Clipboard'
+	#category : #'GToolkit-Clipboard-Clipboard'
 }
 
 { #category : #'library path' }

@@ -3,12 +3,17 @@ Class {
 	#superclass : #FFILibrary,
 	#traits : 'TGtWithStringBox + TGtWithPhlowRust',
 	#classTraits : 'TGtWithStringBox classTrait + TGtWithPhlowRust classTrait',
-	#category : #'GToolkit-Clipboard'
+	#category : #'GToolkit-Clipboard-Clipboard'
 }
 
 { #category : #'library path' }
 GtClipboardLibrary class >> ffiLibrary [
 	^ self
+]
+
+{ #category : #'api - library' }
+GtClipboardLibrary >> androidLibraryName [
+	^ 'libClipboard.so'
 ]
 
 { #category : #testing }
