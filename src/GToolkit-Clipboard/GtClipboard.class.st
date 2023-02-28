@@ -6,7 +6,7 @@ Class {
 		'session',
 		'mutex'
 	],
-	#category : #'GToolkit-Clipboard'
+	#category : #'GToolkit-Clipboard-Clipboard'
 }
 
 { #category : #initialization }
