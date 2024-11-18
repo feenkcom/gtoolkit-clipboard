@@ -16,6 +16,6 @@ BaselineOfGToolkitClipboard >> baseline: spec [
 				spec repository: 'github://feenkcom/gt4phlow-rs:v0.6.10/src' ].
 
 		spec package: 'GToolkit-Clipboard' with: [
-			spec requires: #('GToolkitBoxer' 'GToolkitPhlowForRust') ].
+			spec requires: #(#GToolkitBoxer #GToolkitPhlowForRust) ].
 	]
 ]
