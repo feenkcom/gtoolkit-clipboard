@@ -38,13 +38,14 @@ GtWaylandClipboard class >> setUseXclip [
 
 { #category : #initialize }
 GtWaylandClipboard class >> startUp: resuming [
-	| platformEnvironment |
+	| platform platformEnvironment |
 
-	resuming ifFalse: [ ^ self ].
-	platformEnvironment := OSPlatform current environment.
+	platform := OSPlatform current.
+	(resuming and: [ platform isUnix ]) ifFalse: [ ^ self ].
+	platformEnvironment := platform environment.
 	platformEnvironment
 		at: 'WAYLAND_DISPLAY'
-		encoding: platformEnvironment defaultEncoding
+		encoding: platform defaultEncoding
 		ifPresent: [ :display | self new
 			waylandDisplay: display;
 			beDefault ]
