@@ -1,8 +1,8 @@
 Class {
 	#name : #GtClipboardLibrary,
 	#superclass : #FFILibrary,
-	#traits : 'TGtWithStringBox + TGtWithPhlowRust',
-	#classTraits : 'TGtWithStringBox classTrait + TGtWithPhlowRust classTrait',
+	#traits : 'TGtWithStringBox',
+	#classTraits : 'TGtWithStringBox classTrait',
 	#category : #'GToolkit-Clipboard-Clipboard'
 }
 
