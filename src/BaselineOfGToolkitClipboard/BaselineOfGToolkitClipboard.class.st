@@ -11,11 +11,8 @@ BaselineOfGToolkitClipboard >> baseline: spec [
 		spec
 			baseline: 'GToolkitBoxer' with: [
 				spec repository: 'github://feenkcom/gtoolkit-boxer:v0.8.60/boxer-bindings' ].
-		spec
-			baseline: 'GToolkitPhlowForRust' with: [
-				spec repository: 'github://feenkcom/gt4phlow-rs:v0.6.19/src' ].
 
 		spec package: 'GToolkit-Clipboard' with: [
-			spec requires: #(#GToolkitBoxer #GToolkitPhlowForRust) ].
+			spec requires: #(#GToolkitBoxer) ].
 	]
 ]
