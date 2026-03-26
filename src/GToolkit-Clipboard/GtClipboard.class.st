@@ -48,13 +48,13 @@ GtClipboard >> clipboardText [
 ]
 
 { #category : #accessing }
-GtClipboard >> clipboardText: text [ 
-	| string |
-  
-	string := text asString.
-   self noteRecentClipping: text asText copyWithoutExternalReferences.
-   contents := text asText copyWithoutExternalReferences.
-   self primitiveClipboardText: string
+GtClipboard >> clipboardText: newText [
+	| string text |
+	string := newText asString.
+	text := string asText.
+	self noteRecentClipping: text.
+	contents := text.
+	self primitiveClipboardText: string
 ]
 
 { #category : #initialization }
