@@ -10,7 +10,7 @@ BaselineOfGToolkitClipboard >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitBoxer' with: [
-				spec repository: 'github://feenkcom/gtoolkit-boxer:v0.8.60/boxer-bindings' ].
+				spec repository: 'github://feenkcom/gtoolkit-boxer:v0.8.61/boxer-bindings' ].
 
 		spec package: 'GToolkit-Clipboard' with: [
 			spec requires: #(#GToolkitBoxer) ].
